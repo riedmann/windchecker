@@ -1,10 +1,7 @@
 import 'dart:convert';
-import 'dart:io';
 import 'dart:math';
 
 import 'package:extended_image/extended_image.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:webview_flutter/webview_flutter.dart';
@@ -13,7 +10,7 @@ import 'vo/spot.dart';
 
 class ItemScreen extends StatefulWidget {
   final Spot spot;
-  const ItemScreen({required this.spot, Key? key}) : super(key: key);
+  const ItemScreen({required this.spot, super.key});
 
   @override
   _ItemScreenState createState() => _ItemScreenState();
@@ -57,12 +54,12 @@ class _ItemScreenState extends State<ItemScreen> with TickerProviderStateMixin {
   }
 
   void loadWebcams() async {
-    final AnimationController _animationController = AnimationController(
-      duration: Duration(milliseconds: 200),
+    final AnimationController animationController = AnimationController(
+      duration: const Duration(milliseconds: 200),
       vsync: this,
     );
-    Function() animationListener = () {};
-    Animation? _animation;
+    animationListener() {}
+    Animation? animation;
 
     webcams.clear();
     reports.clear();

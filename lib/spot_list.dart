@@ -7,7 +7,7 @@ import 'vo/spot.dart';
 
 class SpotList extends StatefulWidget {
   final bool isSummer;
-  const SpotList({required this.isSummer, Key? key}) : super(key: key);
+  const SpotList({required this.isSummer, super.key});
 
   @override
   SpotListState createState() => SpotListState();

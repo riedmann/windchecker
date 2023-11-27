@@ -23,12 +23,12 @@ class _DetailImageState extends State<DetailImage>
 
   @override
   Widget build(BuildContext context) {
-    final AnimationController _animationController = AnimationController(
-      duration: Duration(milliseconds: 200),
+    final AnimationController animationController = AnimationController(
+      duration: const Duration(milliseconds: 200),
       vsync: this,
     );
-    Function() animationListener = () {};
-    Animation? _animation;
+    animationListener() {}
+    Animation? animation;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xff346F5D),
@@ -60,8 +60,8 @@ class _DetailImageState extends State<DetailImage>
         child: Image.network(url));
   }
 
-  Widget getImage1(Animation<dynamic>? _animation, animationListener(),
-      AnimationController _animationController) {
+  Widget getImage1(Animation<dynamic>? animation, Function() animationListener,
+      AnimationController animationController) {
     return ExtendedImage.network(
       widget.url,
       fit: BoxFit.fitHeight,
@@ -89,9 +89,9 @@ class _DetailImageState extends State<DetailImage>
         double begin = state.gestureDetails!.totalScale!;
         double end;
 
-        _animation?.removeListener(animationListener);
-        _animationController.stop();
-        _animationController.reset();
+        animation?.removeListener(animationListener);
+        animationController.stop();
+        animationController.reset();
 
         if (begin == 1) {
           end = 4;
@@ -101,14 +101,14 @@ class _DetailImageState extends State<DetailImage>
         animationListener = () {
           //print(_animation.value);
           state.handleDoubleTap(
-              scale: _animation!.value, doubleTapPosition: pointerDownPosition);
+              scale: animation!.value, doubleTapPosition: pointerDownPosition);
         };
-        _animation =
-            _animationController.drive(Tween<double>(begin: begin, end: end));
+        animation =
+            animationController.drive(Tween<double>(begin: begin, end: end));
 
-        _animation!.addListener(animationListener);
+        animation!.addListener(animationListener);
 
-        _animationController.forward();
+        animationController.forward();
       },
     );
   }

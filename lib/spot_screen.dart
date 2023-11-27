@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:windchecker/spot_list.dart';
 
 class SpotScreen extends StatefulWidget {
-  const SpotScreen({Key? key}) : super(key: key);
+  const SpotScreen({super.key});
 
   @override
   _SpotScreenState createState() => _SpotScreenState();
